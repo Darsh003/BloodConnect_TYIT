@@ -1,0 +1,309 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+
+/* .root{
+    background__color: #FFFFFF;
+} */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url('download.png');
+	/* background: #f6f5f7; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh; 
+	margin: -20px 0 50px;
+}
+
+h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+span {
+	font-size: 12px;
+}
+
+a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+.sign-In, .sign-Up, .ghost {
+	border-radius: 20px;
+	border: 1px solid #f44;
+	background-color: #f44;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.sign-In:active, .sign-Up:active {
+	transform: scale(0.95);
+}
+
+.sign-In:focus, .sign-Up:focus .ghost{
+	outline: none;
+}
+
+.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.signUp-form, .signIn-form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #eee;
+	/* border: none; */
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+	border: 1px solid black;
+	border-radius: 1.2rem;
+}
+
+.login_container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 750px;
+	max-width: 85%;
+	min-height: 540px;
+}
+
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+.login_container.right-panel-active .sign-in-container {
+	transform: translateX(100%);
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.login_container.right-panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show 0.6s;
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+	
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.login_container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+.overlay {
+	background: #FF416C;
+	background: -webkit-linear-gradient(to right, #fd3c3c, #FF416C);
+	background: linear-gradient(to right, #fd3c3c, #FF416C);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 0 0;
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.login_container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	top: 0;
+	height: 100%;
+	width: 50%;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+	transform: translateX(-20%);
+}
+
+.login_container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+.overlay-right {
+	right: 0;
+	transform: translateX(0);
+}
+
+.login_container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}
+
+
+ /* CSS for the modern alert */
+ .login-alert {
+	padding: 15px;
+    border-left: 5px solid #fd3c3c;
+    background-color: #cbcbcb;
+    margin: 20px;
+    position: absolute;
+    top: 20px;
+    border-radius: 5px;
+    Z-INDEX: 101;
+    RIGHT: 0PX;
+    PADDING-RIGHT: 30PX;
+    BOX-SHADOW: #00000069 -5PX 8PX 8px 2px;
+}
+
+.alert-close {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+/* Styling for the close icon (you can use an actual image here) */
+.alert-close::before{
+	content: "\00D7"; /* Unicode for the "x" symbol */
+	font-size: 20px;
+	color: #555;
+}
+
+
+
+/* Hover effect for the close icon */
+.alert-close:hover {
+	color: #f00; /* Change the color on hover */
+}
+
+
+
+
+
+
+@media screen and (max-width: 550px) {
+	.sign-in-container {
+		width: 75%;
+	}
+	.sign-up-container{
+		/* left: -50%; */
+		width: 75%;
+	}
+	.right-panel-active .form-container{
+		left: -50%;
+	}
+	.overlay-container{
+		left: 75%;
+		width: 25%;
+	}
+	.overlay{
+		/* color: transparent; */
+		font-size: 40%;
+	}
+	p{
+		font-size: 0.5rem;
+	}
+	.ghost{
+		height: 50px;
+		width: 50px;
+		padding: 1px 1px;
+	}
+	.login_container.right-panel-active .overlay-container{
+		transform: translateX(-300%);
+	}
+	.login_container.right-panel-active .overlay {
+		transform: translateX(50%);
+  }
+}
+
+
+
+@media screen and (max-width: 350px) {
+	.overlay-right{
+		right: -7px;
+	}
+	.overlay-left{
+		left: -8px;
+	}
+}

@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // $num = $result->num_rows;
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             $num = count($rows);
+            $stmt->close();
 
             if ($num == 0) {
                 if ($password == $conf_password) {
@@ -34,9 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     // Insert the user into the database
                     $insert_sql = "INSERT INTO `user_info` (`user_name`, `user_email`, `user_password`, `date`, `og_password`) VALUES (?, ?, ?, current_timestamp(), ?)";
+                    $insert_stmt = $conn->stmt_init();
                     $insert_stmt = $conn->prepare($insert_sql);
                     $insert_stmt->bind_param("ssss", $user_name, $user_email, $hash,$conf_password);
                     $insert_result = $insert_stmt->execute();
+                    $insert_stmt->close();
 
                     if ($insert_result) {
                         $showAlert = 1;

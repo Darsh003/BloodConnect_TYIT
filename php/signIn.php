@@ -20,12 +20,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $result = $stmt->get_result();
         $rows = $result->fetch_all(MYSQLI_ASSOC);
         $num = count($rows);
-
+        $stmt->close();
         if($num == 1){
                 foreach ($rows as $row){
                 if(password_verify($password_login, $row['user_password'])){
                     $login = true;
                     session_start();
+                    session_regenerate_id();
                     $_SESSION['loggedin'] = true;
                     $_SESSION['username'] = $user_name_login;
                     header("location: home.php");
